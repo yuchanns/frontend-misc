@@ -88,6 +88,7 @@
           padding-right: 16px;
           flex-shrink: 0;
           margin-bottom: 0;
+          background-color: #fff;
         }
         .head-block-user {
           width: 25%;
@@ -151,8 +152,33 @@
         </div>
       </div>
       <style>
+        .body {
+          z-index: -1;
+          min-height: 100%;
+          overflow: hidden;
+          position: relative;
+          flex: none;
+        }
+        .body-container {
+          padding-top: 20px;
+        }
+        .body-border {
+          border: 1px solid #ccc;
+          box-sizing: border-box;
+          border-radius: 4px;
+        }
+        .body:before {
+          content: " ";
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          will-change: transform;
+          background: #dae0e6;
+        }
         .card {
-          margin-top: -32px;
+          margin-top: -52px;
         }
         .clearfix:before, .clearfix:after {
           display: table;
@@ -221,6 +247,7 @@
         .card-profile {
           display: flex;
           flex-direction: column;
+          margin-bottom: 16px;;
         }
         .card-profile-container {
           display: block;
@@ -254,9 +281,10 @@
           fill: currentColor;
         }
       </style>
-      <div class="container">
+      <div class="container body-container">
+        <div class="body"></div>
         <div class="head-inner">
-          <div class="head-block head-block-user">
+          <div class="head-block head-block-user body-border">
             <div class="card">
               <div class="clearfix card-user">
                 <div class="card-avatar-container">
@@ -292,7 +320,7 @@
               </div>
             </div>
           </div>
-          <div class="head-block head-block-nav"></div>
+          <div class="head-block head-block-nav body-border" style="margin-left: 10px;"></div>
         </div>
       </div>
     </main>

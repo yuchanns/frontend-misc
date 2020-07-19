@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Overview</title>
+    <style type="text/css">
+      html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, button, cite, code, del, dfn, em, img, input, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      
+      body {
+        min-height: calc(100vh - 48px);
+        line-height: 1;
+        font-family: IBMPlexSans, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased
+      }
+      
+      ol, ul {
+        padding-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      
+      ul li {
+        list-style: none;
+      }
+      button {
+        background: transparent;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+        padding: initial;
+      }
+      
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      
+      input, textarea {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        font-family: inherit;
+      }
+      
+      input[type=search]::-webkit-search-cancel-button{
+        padding-right: 30px;
+      }
+      
+      :focus {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <style>
+        .head {
+          z-index: 3;
+          width: 100%;
+          top: 0;
+          position: sticky;
+          background-color: #fff;
+          border-bottom: 1px solid #e1e4e8;
+        }
+        .container {
+          max-width: 1280px;
+          margin-right: auto;
+          margin-left: auto;
+          padding-left: 32px;
+          padding-right: 32px;
+        }
+        .head-inner {
+          display: flex;
+          flex-direction: row;
+          margin-left: -16px;
+          margin-right: -16px;
+        }
+        .head-block {
+          padding-left: 16px;
+          padding-right: 16px;
+          flex-shrink: 0;
+          margin-bottom: 0;
+        }
+        .head-block-user {
+          width: 25%;
+        }
+        .head-block-nav {
+          width: 75%;
+        }
+        .nav-container {
+          width: 100%;
+          box-shadow: none;
+          display: flex;
+          overflow-x: auto;
+          overflow-x: hidden;
+          justify-content: space-between;
+        }
+        .nav-body {
+          display: flex;
+        }
+        .nav-item {
+          padding: 8px 16px;
+          font-size: 14px;
+          line-height: 30px;
+          color: #1b1f23;
+          text-align: center;
+          white-space: nowrap;
+          background-color: initial;
+          border: 0;
+          border-bottom: 2px solid rgba(209,213,218,0);
+          transition: border-bottom-color .36s ease-in
+        }
+        .nav-item:focus, .nav-item:hover {
+          text-decoration: none;
+          transition-timing-function: ease-out;
+          transition-duration: .12s;
+          border-bottom-color: #d1d5da;
+          outline: 1px dotted transparent;
+          outline-offset: -1px;
+        }
+        .nav-item-selected {
+          font-weight: 600;
+          border-bottom-color: #f9826c!important;
+          outline: 1px dotted transparent;
+          outline-offset: -1px;
+        }
+      </style>
+      <div class="head">
+        <div class="container">
+          <div class="head-inner">
+            <div class="head-block head-block-user"></div>
+            <div class="head-block head-block-nav">
+              <div class="nav-container">
+                <nav class="nav-body">
+                  <a class="nav-item nav-item-selected" href="">首页</a>
+                  <a class="nav-item" href="">分类</a>
+                  <a class="nav-item" href="">收录</a>
+                  <a class="nav-item" href="">关于</a>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>
+        .card {
+          margin-top: -32px;
+        }
+        .clearfix:before, .clearfix:after {
+          display: table;
+          content: "";
+        }
+        .card-user {
+          margin-bottom: 0;
+          align-items: center;
+          display: block;
+        }
+        .card-name-container {
+          position: static;
+          top: 0px;
+          left: 352px;
+          width: 280px;
+          padding-bottom: 16px;
+          padding-top: 16px;
+          /* float: left; */
+        }
+        .card-names {
+          line-height: 1;
+          padding-left: 0;
+          font-weight: 600;
+          font-size: 32px;
+          margin: .67em 0;
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+        .card-name {
+          font-size: 26px;
+          line-height: 1.25;
+          overflow: hidden;
+          display: block;
+        }
+        .card-nickname {
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 24px;
+          color: #666;
+          display: block;
+        }
+        .card-avatar-container {
+          z-index: 4;
+          display: inline-block;
+          margin-right: 0;
+          position: relative;
+          flex-shrink: 0;
+          width: 100%
+        }
+        .card-avatar {
+          border-radius: 50%;
+          display: inline-block;
+          overflow: hidden;
+          line-height: 1;
+          vertical-align: middle;
+          background-color: #fff;
+          border: 1px solid #e1e4e8;
+          height: auto;
+        }
+        .card-note {
+          overflow: hidden;
+          font-size: 16px;
+          margin-bottom: 16px;
+        }
+        .card-profile {
+          display: flex;
+          flex-direction: column;
+        }
+        .card-profile-container {
+          display: block;
+          flex-direction: column;
+        }
+        .card-details {
+          list-style: none;
+        }
+        .card-detail {
+          width: 100%;
+          max-width: 100%;
+          display: inline-block;
+          vertical-align: top;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          padding-left: 22px;
+          font-size: 14px;
+          padding-top: 4px;
+          margin-top: 3px;
+        }
+        .octicon {
+          margin-left: -22px;
+          float: left;
+          width: 16px;
+          /* margin-top: 3px; */
+          color: #6a737d;
+          text-align: center;
+          vertical-align: text-bottom;
+          display: inline-block;
+          fill: currentColor;
+        }
+      </style>
+      <div class="container">
+        <div class="head-inner">
+          <div class="head-block head-block-user">
+            <div class="card">
+              <div class="clearfix card-user">
+                <div class="card-avatar-container">
+                  <img class="card-avatar" width=260 height=260 src="https://avatars0.githubusercontent.com/u/25029451?s=460&u=1a3f348e3d0aff0b4d602899b63bf2e0b3140c5e&v=4" alt="yuchanns">
+                </div>
+                <div class="card-name-container">
+                  <h1 class="card-names">
+                    <span class="card-name">科学搜查官</span>
+                    <span class="card-nickname">yuchanns</span>
+                  </h1>
+                </div>
+              </div>
+              <div class="card-note">
+                <div>Too much want to know, So little time to learn.</div>
+              </div>
+              <div class="card-profile">
+                <div class="card-profile-container">
+                  <ul class="card-details">
+                    <li class="card-detail">
+                      <svg class="octicon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.535a5 5 0 117.072-7.072v.001zm1.06 8.132a6.5 6.5 0 10-9.192 0l3.535 3.536a1.5 1.5 0 002.122 0l3.535-3.536zM8 9a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+                      <span class="card-label">Shenzhen, China</span>
+                    </li>
+                    <li class="card-detail">
+                      <svg class="octicon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M1.75 2A1.75 1.75 0 000 3.75v.736a.75.75 0 000 .027v7.737C0 13.216.784 14 1.75 14h12.5A1.75 1.75 0 0016 12.25v-8.5A1.75 1.75 0 0014.25 2H1.75zM14.5 4.07v-.32a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v.32L8 7.88l6.5-3.81zm-13 1.74v6.441c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V5.809L8.38 9.397a.75.75 0 01-.76 0L1.5 5.809z"></path></svg>
+                      <span class="card-label">airamusume@gmail.com</span>
+                    </li>
+                    <li class="card-detail">
+                      <svg class="octicon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg>
+                      <span class="card-label">后端开发工程师</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="head-block head-block-nav"></div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

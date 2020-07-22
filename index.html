@@ -28,7 +28,7 @@
       }
       
       ul li {
-        list-style: none;
+        /* list-style: none; */
       }
       button {
         background: transparent;
@@ -83,18 +83,20 @@
           margin-left: -16px;
           margin-right: -16px;
         }
-        .head-block {
+        .block {
           padding-left: 16px;
           padding-right: 16px;
           flex-shrink: 0;
           margin-bottom: 0;
+        }
+        .head-block {
           background-color: #fff;
         }
         .head-block-user {
           width: 25%;
         }
         .head-block-nav {
-          width: 75%;
+          width: 70%;
         }
         .nav-container {
           width: 100%;
@@ -287,7 +289,7 @@
       <div class="container body-container">
         <div class="body"></div>
         <div class="head-inner">
-          <div class="head-block head-block-user body-border">
+          <div class="block head-block head-block-user body-border">
             <div class="card">
               <div class="clearfix card-user">
                 <div class="card-avatar-container">
@@ -323,7 +325,108 @@
               </div>
             </div>
           </div>
-          <div class="head-block head-block-nav body-border" style="margin-left: 25px;"></div>
+          <style>
+            .about-container {
+              margin-top: 15px;
+              transition: margin .20s ease-in
+            }
+            .about-container:hover, .about-container:active {
+              margin-top: 0;
+              margin-left: -20px;
+              transition: margin .36s ease-out
+            }
+            .about-box {
+              border-bottom: 1px solid #ccc;
+              padding: 24px;
+            }
+            .about-title {
+              display: flex;
+            }
+            .title-text {
+              font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+              font-size: 12px;
+              margin-bottom: 16px;
+              flex: auto;
+            }
+            .text-gray-light {
+              color: #6a737d;
+            }
+            .about-content {
+              font-size: 14px!important;
+              margin-right: auto;
+              margin-left: auto;
+              max-width: 1012px;
+              max-height: 250px;
+              transition: max-height .20s ease-in
+            }
+            .about-content:hover, .about-content:active {
+              max-height: 320px;
+              transition: max-height .36s ease-out
+            }
+            .markdown-body {
+              font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+              line-height: 1.5;
+              font-size: 16px;
+              word-wrap: break-word;
+              -webkit-mask-image: linear-gradient(180deg,#000 60%,transparent);
+              overflow: hidden;
+            }
+            .markdown-body:before, .markdown-body:after {
+              display: table;
+              content: "";
+            }
+            .markdown-body blockquote, .markdown-body details, .markdown-body dl, .markdown-body ol, .markdown-body p, .markdown-body pre, .markdown-body table, .markdown-body ul {
+              margin-top: 0;
+              margin-bottom: 16px;
+            }
+            .markdown-body>:last-child {
+              margin-bottom: 0;
+            }
+            .markdown-body>:first-child {
+                margin-top: 0;
+            }
+            .markdown-body ol, .markdown-body ul {
+                padding-left: 2em;
+            }
+            .markdown-body ul {
+              list-style: disc outside!important;
+            }
+            .markdown-body ol ol, .markdown-body ol ul, .markdown-body ul ol, .markdown-body ul ul {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            .markdown-body li+li {
+                margin-top: .25em;
+            }
+          </style>
+          <div class="block head-block-nav" style="margin-left: 25px;">
+            <div>
+              <div class="about-container head-block body-border">
+                <div class="about-box">
+                  <div class="about-title">
+                    <div class="title-text">
+                      README<span class="text-gray-light">.md</span>
+                    </div>
+                  </div>
+                  <article class="about-content markdown-body">
+                    <p><a href="https://github.com/yuchanns/github-readme-stats"><img src="https://camo.githubusercontent.com/aff1dab3b5d3bcc03fc228007dcadf9cdd2fdfce/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170693f757365726e616d653d79756368616e6e732673686f775f69636f6e733d74727565" alt="Anurag's github stats" data-canonical-src="https://github-readme-stats.vercel.app/api?username=yuchanns&amp;show_icons=true" style="max-width:100%;"></a></p>
+                    <p>I'm yuchanns.</p>
+                    <ul>
+                      <li>I'm currently working on Shenzhen China.</li>
+                      <li>I'm currently learning golang, lisp, k8s.</li>
+                      <li>Ask me about php, js, docker, golang.</li>
+                      <li>How to reach me:
+                        <ul>
+                          <li>mail: airamusume@gmail.com</li>
+                          <li>qq: 87260333</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>

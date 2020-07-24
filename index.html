@@ -356,7 +356,7 @@
               margin-right: auto;
               margin-left: auto;
               max-width: 1012px;
-              max-height: 250px;
+              max-height: 150px;
               transition: max-height .20s ease-in;
             }
 			.about-container:hover .about-content,
@@ -410,8 +410,8 @@
                     </div>
                   </div>
                   <article class="about-content markdown-body">
+					<p>I'm yuchanns.</p>
                     <p><a href="https://github.com/yuchanns/github-readme-stats"><img src="https://camo.githubusercontent.com/aff1dab3b5d3bcc03fc228007dcadf9cdd2fdfce/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170693f757365726e616d653d79756368616e6e732673686f775f69636f6e733d74727565" alt="Anurag's github stats" data-canonical-src="https://github-readme-stats.vercel.app/api?username=yuchanns&amp;show_icons=true" style="max-width:100%;"></a></p>
-                    <p>I'm yuchanns.</p>
                     <ul>
                       <li>I'm currently working on Shenzhen China.</li>
                       <li>I'm currently learning golang, lisp, k8s.</li>
@@ -427,6 +427,85 @@
                 </div>
               </div>
             </div>
+			<style>
+				.search-container {
+					margin-top: 16px;
+					padding: 16px;
+					border-bottom: 1px solid #d1d5da;
+					background-color: #fff;
+				}
+				.search-box {
+					margin-right: 16px;
+					margin-bottom: 0;
+					flex: auto;
+				}
+				.search-input {
+					width: 100%;
+					font-size: 14px;
+					padding: 5px 12px;
+					line-height: 20px;
+					color: #24292e;
+					vertical-align: middle;
+					background-color: #f6f7f8;
+					background-repeat: no-repeat;
+					background-position: right 8px center;
+					border: 1px solid #ccc;
+					border-radius: 6px;
+					outline: none;
+					box-shadow: inset 0 1px 0 rgba(225,228,232,.2);
+				}
+				.search-input:hover, .search-input:focus {
+					background-color: #fff;
+					border: 1px solid #0079d3;
+				}
+				.search-options {
+					display: flex;
+				}
+				.search-btn-box {
+					margin-right: 8px;
+					position: relative;
+				}
+				.search-btn {
+					color: #24292e;
+					background-color: #fafbfc;
+					box-shadow: 0 1px 0 rgba(27,31,35,.04), inset 0 1px 0 hsla(0,0%,100%,.25);
+					transition: background-color .2s cubic-bezier(.3,0,.5,1);
+					position: relative;
+					display: inline-block;
+					padding: 5px 16px;
+					font-size: 14px;
+					font-weight: 500;
+					line-height: 20px;
+					white-space: nowrap;
+					vertical-align: middle;
+					cursor: pointer;
+					user-select: none;
+					border: 1px solid rgba(27,31,35,.15);
+					border-radius: 6px;
+					-webkit-appearance: none;
+				}
+				.search-btn:hover, .search-btn:focus {
+					background-color: #fff;
+					border: 1px solid #0079d3;
+					transition-duration: .1s;
+				}
+				.search-btn i {
+					font-style: normal;
+					font-weight: 500;
+					opacity: .75;
+				}
+			</style>
+			<div class="search-container body-border">
+				<div style="display: flex;">
+					<div class="search-box">
+						<input type="search" class="search-input" placeholder="Find a post...">
+					</div>
+					<div class="search-options">
+						<div class="search-btn-box"><button class="search-btn"><i>Category:</i> All</button></div>
+						<div class="search-btn-box"><button class="search-btn"><i>Tag:</i> All</button></div>
+					</div>
+				</div>
+			</div>
           </div>
         </div>
       </div>

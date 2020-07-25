@@ -105,12 +105,10 @@
         .head-inner {
           display: flex;
           flex-direction: column;
-          margin-left: -8px;
+          margin-left: 0;
           margin-right: -8px;
         }
         .block {
-          padding-left: 8px;
-          padding-right: 8px;
           flex-shrink: 0;
           margin-bottom: 24px;
         }
@@ -320,8 +318,8 @@
           list-style: none;
         }
         .card-detail {
-          width: 100%;
-          max-width: 100%;
+          width: calc(100vw-22px);
+          max-width: calc(100vw-22px);
           display: inline-block;
           vertical-align: top;
           overflow: hidden;
@@ -423,7 +421,21 @@
           <style>
             @media (max-width: 768px) {
               .main-container {
-                margin-left: -9px!important;
+                margin-left: 0!important;
+              }
+              .card {
+                padding-left: 24px;
+                padding-right: 24px;
+              }
+            }
+            @media (min-width: 768px) {
+              .about-container {
+                transform: scale(1);
+                transition: transform .20s ease-out;
+              }
+              .about-container:hover, .about-container:active {
+                transform: scale(1.05);
+                transition: transform .36s ease-out;
               }
             }
             .main-container {
@@ -431,12 +443,6 @@
             }
             .about-container {
               margin-top: 15px;
-			  transform: scale(1);
-              transition: transform .20s ease-out;
-            }
-            .about-container:hover, .about-container:active {
-			  transform: scale(1.05);
-			  transition: transform .36s ease-out;
             }
             .about-box {
               border-bottom: 1px solid #ccc;
@@ -803,8 +809,7 @@
         }
         .posts-main-block {
           max-height: 250px;
-          padding: 5px 8px 10px;
-          padding-left: 16px;
+          padding: 5px 16px 10px;
         }
         .posts-topic-container {
           align-items: center;

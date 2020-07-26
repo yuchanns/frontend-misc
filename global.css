@@ -345,6 +345,12 @@ input[type=search]::-webkit-search-cancel-button{
     padding-left: 24px;
     padding-right: 24px;
   }
+  .card-sticky-bar {
+    display: none!important;
+  }
+  .card-avatar-container {
+    z-index: 2;
+  }
 }
 @media (min-width: 768px) {
   .about-container {

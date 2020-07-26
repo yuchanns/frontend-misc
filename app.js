@@ -15,18 +15,21 @@ class Profile extends React.Component {
       <div class="card-profile">
         <div class="card-profile-container">
           <ul class="card-details">
+            {this.props.detail.hasOwnProperty('location') &&
             <li class="card-detail">
               <svg class="octicon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.535a5 5 0 117.072-7.072v.001zm1.06 8.132a6.5 6.5 0 10-9.192 0l3.535 3.536a1.5 1.5 0 002.122 0l3.535-3.536zM8 9a2 2 0 100-4 2 2 0 000 4z"></path></svg>
-              <span class="card-label">Shenzhen, China</span>
-            </li>
+              <span class="card-label">{this.props.detail.location}</span>
+            </li>}
+            {this.props.detail.hasOwnProperty('mail') &&
             <li class="card-detail">
               <svg class="octicon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M1.75 2A1.75 1.75 0 000 3.75v.736a.75.75 0 000 .027v7.737C0 13.216.784 14 1.75 14h12.5A1.75 1.75 0 0016 12.25v-8.5A1.75 1.75 0 0014.25 2H1.75zM14.5 4.07v-.32a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v.32L8 7.88l6.5-3.81zm-13 1.74v6.441c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V5.809L8.38 9.397a.75.75 0 01-.76 0L1.5 5.809z"></path></svg>
-              <span class="card-label">airamusume@gmail.com</span>
-            </li>
+              <span class="card-label">{this.props.detail.mail}</span>
+            </li>}
+            {this.props.detail.hasOwnProperty('job') &&
             <li class="card-detail">
               <svg class="octicon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg>
-              <span class="card-label">后端开发工程师</span>
-            </li>
+              <span class="card-label">{this.props.detail.job}</span>
+            </li>}
           </ul>
         </div>
       </div>
@@ -40,17 +43,17 @@ class User extends React.Component {
       <React.Fragment>
         <div class="clearfix card-user">
           <div class="card-avatar-container">
-            <img class="card-avatar" width='260' height='260' src="https://avatars0.githubusercontent.com/u/25029451" alt="yuchanns" />
+            <img class="card-avatar" width='260' height='260' src={this.props.user.avatar} alt={this.props.user.name} />
           </div>
           <div class="card-name-container">
             <h1 class="card-names">
-              <span class="card-name">科学搜查官</span>
-              <span class="card-nickname">yuchanns</span>
+              <span class="card-name">{this.props.user.nick}</span>
+              <span class="card-nickname">{this.props.user.name}</span>
             </h1>
           </div>
         </div>
         <div class="card-note">
-          <div>Too much want to know, So little time to learn.</div>
+          <div>{this.props.user.desc}</div>
         </div>
       </React.Fragment>
     )
@@ -62,8 +65,8 @@ class UserMini extends React.Component {
     return (
       <div class="card-sticky-bar" style={{display: this.props.isShow ? 'block' : 'none'}}>
         <div class="card-user-mini">
-          <span class="card-avatar-mini"><img class="card-avatar" width="32" height="32" src="https://avatars0.githubusercontent.com/u/25029451?s=460&u=1a3f348e3d0aff0b4d602899b63bf2e0b3140c5e&v=4" alt="yuchanns" /></span>
-          <span class="card-name-mini"><strong>yuchanns</strong></span>
+          <span class="card-avatar-mini"><img class="card-avatar" width="32" height="32" src={this.props.avatar} alt={this.props.name} /></span>
+          <span class="card-name-mini"><strong>{this.props.name}</strong></span>
         </div>
       </div>
     )
@@ -88,9 +91,9 @@ class Card extends React.Component {
       <div class="head-block-user">
         <div class="block head-block body-border">
           <div class="card">
-            <UserMini isShow={this.state.isShow} />
-            <User />
-            <Profile />
+            <UserMini isShow={this.state.isShow} name={this.props.user.name} avatar={this.props.user.avatar} />
+            <User user={this.props.user} />
+            <Profile detail={this.props.user.detail} />
           </div>
         </div>
       </div>
@@ -104,7 +107,7 @@ class Layout extends React.Component {
       <div class="container body-container">
         <Background />
         <div class="head-inner">
-          <Card />
+          <Card user={this.props.user} />
           <div class="block head-block-nav main-container">
           {this.props.children}
           </div>
@@ -118,11 +121,6 @@ class Head extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        navList: [
-          { 'name': '首页', 'url': '/' },
-          { 'name': '收录', 'url': '/awesome' },
-          { 'name': '关于', 'url': '/readme' }
-        ],
         selectedIdx: 0
       }
       this.switchTab = idx => {
@@ -138,11 +136,9 @@ class Head extends React.Component {
             <div class="head-block head-block-nav">
               <div class="nav-container">
                 <nav class="nav-body">
-                {this.state.navList.map(item => {
-                  return (
-                      <NavLink exact className="nav-item" to={item.url} activeClassName="nav-item-selected">{item.name}</NavLink>
-                  )
-                })}
+                {this.props.navList.map(item => (
+                  <NavLink exact className="nav-item" to={item.url} activeClassName="nav-item-selected">{item.name}</NavLink>
+                ))}
                 </nav>
               </div>
             </div>
@@ -177,10 +173,6 @@ class Search extends React.Component {
 }
 
 class Top extends React.Component {
-  constructor(props) {
-    super(props)
-    this.article = `<p>I'm yuchanns.</p><p><a href="https://github.com/yuchanns/github-readme-stats"><img src="https://camo.githubusercontent.com/aff1dab3b5d3bcc03fc228007dcadf9cdd2fdfce/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170693f757365726e616d653d79756368616e6e732673686f775f69636f6e733d74727565" alt="Anurag's github stats" data-canonical-src="https://github-readme-stats.vercel.app/api?username=yuchanns&amp;show_icons=true" style="max-width:100%;"></a></p><ul><li>I'm currently working on Shenzhen China.</li><li>I'm currently learning golang, lisp, k8s.</li><li>Ask me about php, js, docker, golang.</li><li>How to reach me:<ul><li>mail: airamusume@gmail.com</li><li>qq: 87260333</li></ul></li></ul>`
-  }
   render() {
     return (
       <div>
@@ -188,10 +180,10 @@ class Top extends React.Component {
           <div class="about-box">
             <div class="about-title">
               <div class="title-text">
-                README<span class="text-gray-light">.md</span>
+                {this.props.post.title}<span class="text-gray-light">.md</span>
               </div>
             </div>
-            <article class="about-content markdown-body mask" style={{'overflow-y': 'hidden'}} dangerouslySetInnerHTML={{ __html: this.article }}></article>
+            <article class="about-content markdown-body mask" style={{'overflow-y': 'hidden'}} dangerouslySetInnerHTML={{ __html: this.props.post.excerpt }}></article>
           </div>
         </div>
       </div>
@@ -226,6 +218,12 @@ class TimeLine extends React.Component {
 }
 
 class Post extends React.Component {
+  constructor(props) {
+    super(props);
+    this.format = date => {
+      return moment(date).fromNow();
+    }
+  }
   render() {
     return (
       <div class="posts-item">
@@ -233,7 +231,7 @@ class Post extends React.Component {
           <div class="posts-info-container">
             <div class="posts-info-block">
               <div class="posts-date">
-                <span class="posts-info-date-text">Posted {this.props.post.date}</span>
+                <span class="posts-info-date-text">Posted {this.format(this.props.post.frontmatter.date)}</span>
               </div>
             </div>
           </div>
@@ -251,7 +249,7 @@ class Post extends React.Component {
           </div>
           <div class="posts-topics-container">
             <div class="posts-topics-block">
-            {this.props.post.tags.map(tag => (
+            {this.props.post.frontmatter.tags.map(tag => (
               <a class="posts-topics-tag" href="">{tag}</a>
             ))}
             </div>
@@ -279,41 +277,37 @@ class Posts extends React.Component {
 class Archive extends React.Component {
   constructor(props) {
     super(props);
-    this.timeline = [
-      '2020',
-      '2019',
-      '2018',
-    ];
+    var timelinePosts = {};
+    this.props.posts.forEach(post => {
+      var year = moment(post.frontmatter.date).format('YYYY');
+      if (!timelinePosts.hasOwnProperty(year)) {
+        timelinePosts[year] = [];
+      };
+      timelinePosts[year].push(post);
+    });
+    this.timeline = Object.keys(timelinePosts);
+    this.timeline.sort((a, b) => {
+      return b - a;
+    });
     this.state = {
-      selectedTime: this.timeline[0],
-    }
-    this.setSelectedTime = time => {
-      this.setState({selectedTime: time})
-    }
-    this.posts = {
-      '2020': [
-        {
-          title: 'Replacing net.DefaultResolver with a caching DNS over TLS/HTTPS resolver',
-          date: '2 months ago',
-          tags: ['golang', 'dns', 'https'],
-          excerpt: `<p>DNS caching has been discussed multiple times in the past. The consensus seems to be that Go won't go there: <a href="https://github.com/golang/go/issues/24796">github.com/golang/go/issues/24796</a></p><p>I've seen a few DNS caching solutions for Go (<a href="https://github.com/rs/dnscache">one</a>, <a href="https://github.com/mercari/go-dnscache">two</a>), however, I haven't seen any implementations that allow replacing the <code>net.DefaultResolver</code>?</p><p>Package <a href="https://github.com/artyom/dot">github.com/artyom/dot</a> got me thinking if I could do the same for DNS caching, and also DNS over HTTPS.</p><p>So <a href="https://godoc.org/github.com/ncruces/go-dns">github.com/ncruces/go-dns</a> is my attempt. Replacing <code>net.DefaultResolver</code> with a caching DNS over HTTPS resolver using 1.1.1.1 as the name server should be this simple:</p><pre><code class="language-go">net.DefaultResolver = dns.NewCachingResolver(dns.NewHTTPSResolver(</code></pre>`,
-        },
-        {
-          title: 'How to do something every 5 minutes in Go?',
-          date: '2 months ago',
-          tags: ['golang', 'timertick'],
-          excerpt: `<p>I feel like it's a dummy question, but I want to ask it anyway since I do not have much experience with concurrent programming.</p><p>In the app I am currently working on, someone wrote a code that should do something (in this case, printing "TICK!") every, let's say 5 minutes:</p><pre><code class="language-go">go func() {
-for {
-   fmt.Println("TICK!")
-   time.Sleep(5 * time.Minute)
-}
-}()</code></pre>`,
-        }
-      ],
+      selectedTime: this.timeline.length > 0 ? this.timeline[0] : 0,
     };
+    this.setSelectedTime = time => {
+      this.setState({selectedTime: time});
+    };
+    this.posts = {};
+    this.timeline.forEach(time => {
+      var posts = timelinePosts[time];
+      posts.sort((a, b) => {
+        var btimestamp = new Date(b.frontmatter.date).valueOf();
+        var atimestamp = new Date(a.frontmatter.date).valueOf();
+        return btimestamp - atimestamp;
+      });
+      this.posts[time] = posts;
+    })
     this.timePosts = time => {
       return this.posts.hasOwnProperty(time) ? this.posts[time] : [];
-    }
+    };
   }
   render() {
     return (
@@ -328,14 +322,21 @@ for {
 }
 
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    var topPosts = allData.posts.filter(post => {
+      return post.frontmatter.hasOwnProperty('top');
+    });
+    this.topPost = topPosts.length > 0 ? topPosts[0]: {};
+  }
   render() {
     return (
       <React.Fragment>
-        <Head />
-        <Layout>
-          <Top />
+        <Head navList={allData.navList} />
+        <Layout user={allData.user}>
+          {Object.keys(this.topPost).length > 0 && <Top post={this.topPost} />}
           <Search />
-          <Archive />
+          <Archive posts={allData.posts} />
         </Layout>
       </React.Fragment>
     )
